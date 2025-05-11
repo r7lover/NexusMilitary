@@ -12,6 +12,61 @@
       background: url('https://i.imgur.com/3IMbtnw.jpeg') no-repeat center center fixed;
       background-size: cover;
       color: white;
+      display: flex;
+    }
+
+    /* Levý panel */
+    .sidebar {
+      width: 250px;
+      background-color: rgba(0, 0, 0, 0.85);
+      padding: 20px;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.7);
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+
+    .sidebar h2 {
+      font-size: 1.5em;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #666;
+      padding-bottom: 5px;
+    }
+
+    .sidebar .info {
+      margin-bottom: 15px;
+      transition: all 0.3s ease;
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .sidebar .info:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+      transform: scale(1.03);
+    }
+
+    .info label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #ccc;
+    }
+
+    .info textarea {
+      width: 100%;
+      resize: vertical;
+      background-color: #111;
+      color: white;
+      border: none;
+      padding: 5px;
+      border-radius: 4px;
+    }
+
+    .main {
+      margin-left: 270px;
+      flex: 1;
     }
 
     header {
@@ -57,7 +112,15 @@
       font-size: 0.9em;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
+      .sidebar {
+        display: none;
+      }
+
+      .main {
+        margin-left: 0;
+      }
+
       .container {
         margin: 20px;
         padding: 20px;
@@ -66,48 +129,66 @@
   </style>
 </head>
 <body>
-  <header>
-    <h1>Pravidla Military</h1>
-  </header>
-
-  <div class="container">
-    <h2><strong>1. Obecná pravidla</strong></h2>
-    <ul>
-      <li>Respektuj hráče a staff.</li>
-      <li>Zákaz používání cheatů a zneužívání bugů.</li>
-      <li>Zákaz rasistického chování a používání „n-word“.</li>
-    </ul>
-
-    <h2><strong>2. Základní RP výrazy</strong></h2>
-    <ul>
-      <li><strong>RP (Roleplay):</strong> Hraní smyšlené postavy (např. voják, terorista).</li>
-      <li><strong>OOC (Out of Character):</strong> Vše, co není v rámci RP.</li>
-      <li><strong>IC (In Character):</strong> Vše, co je součástí roleplay postavy.</li>
-      <li><strong>/me:</strong> Popisuje činnost postavy.</li>
-      <li><strong>/do:</strong> Popis interakce s očekáváním reakce druhého hráče.</li>
-      <li><strong>/try:</strong> Pokus s výsledkem ANO/NE.</li>
-      <li><strong>/doc:</strong> Slouží k odpočtu nějaké činnosti.</li>
-    </ul>
-
-    <h2><strong>3. Military pravidla</strong></h2>
-    <ul>
-      <li>Frakce musí být schválená admin týmem.</li>
-      <li>Raketomet se nesmí používat proti pěchotě. Výjimku mají teroristé – max. 1 střela.</li>
-      <li>Raid na jiný stát je možný jen po schválení v ticketu (výjimkou je rescue raid).</li>
-      <li>Stíhačky musí přebíjet – doporučeno každých 5 minut.</li>
-      <li>Zákaz campení EMS zón a střílení z/do EMS zón.</li>
-      <li>Každý voják musí mít VK (vojenskou knížku) – obsahuje jméno, datum narození, hodnost a armádu.</li>
-    </ul>
-
-    <h2><strong>4. Sankce</strong></h2>
-    <ul>
-      <li>Porušení pravidel vede k warnu, kicku nebo banu.</li>
-      <li>Admin tým má právo zasáhnout dle vlastního uvážení.</li>
-    </ul>
+  <div class="sidebar">
+    <h2>O nás</h2>
+    <div class="info">
+      <label for="about">O serveru:</label>
+      <textarea id="about" rows="3" placeholder="Napiš něco o serveru..."></textarea>
+    </div>
+    <div class="info">
+      <label for="team">Tým:</label>
+      <textarea id="team" rows="2" placeholder="Jména adminů, vývojářů..."></textarea>
+    </div>
+    <div class="info">
+      <label for="discord">Discord:</label>
+      <textarea id="discord" rows="1" placeholder="Odkaz na Discord..."></textarea>
+    </div>
   </div>
 
-  <footer>
-    &copy; 2025 Nexus Military - r7lover
-  </footer>
+  <div class="main">
+    <header>
+      <h1>Pravidla Military</h1>
+    </header>
+
+    <div class="container">
+      <h2><strong>1. Obecná pravidla</strong></h2>
+      <ul>
+        <li>Respektuj hráče a staff.</li>
+        <li>Zákaz používání cheatů a zneužívání bugů.</li>
+        <li>Zákaz rasistického chování a používání „n-word“.</li>
+      </ul>
+
+      <h2><strong>2. Základní RP výrazy</strong></h2>
+      <ul>
+        <li><strong>RP (Roleplay):</strong> Hraní smyšlené postavy (např. voják, terorista).</li>
+        <li><strong>OOC (Out of Character):</strong> Vše, co není v rámci RP.</li>
+        <li><strong>IC (In Character):</strong> Vše, co je součástí roleplay postavy.</li>
+        <li><strong>/me:</strong> Popisuje činnost postavy.</li>
+        <li><strong>/do:</strong> Popis interakce s očekáváním reakce druhého hráče.</li>
+        <li><strong>/try:</strong> Pokus s výsledkem ANO/NE.</li>
+        <li><strong>/doc:</strong> Slouží k odpočtu nějaké činnosti.</li>
+      </ul>
+
+      <h2><strong>3. Military pravidla</strong></h2>
+      <ul>
+        <li>Frakce musí být schválená admin týmem.</li>
+        <li>Raketomet se nesmí používat proti pěchotě. Výjimku mají teroristé – max. 1 střela.</li>
+        <li>Raid na jiný stát je možný jen po schválení v ticketu (výjimkou je rescue raid).</li>
+        <li>Stíhačky musí přebíjet – doporučeno každých 5 minut.</li>
+        <li>Zákaz campení EMS zón a střílení z/do EMS zón.</li>
+        <li>Každý voják musí mít VK (vojenskou knížku) – obsahuje jméno, datum narození, hodnost a armádu.</li>
+      </ul>
+
+      <h2><strong>4. Sankce</strong></h2>
+      <ul>
+        <li>Porušení pravidel vede k warnu, kicku nebo banu.</li>
+        <li>Admin tým má právo zasáhnout dle vlastního uvážení.</li>
+      </ul>
+    </div>
+
+    <footer>
+      &copy; 2025 Nexus Military - r7lover
+    </footer>
+  </div>
 </body>
 </html>
