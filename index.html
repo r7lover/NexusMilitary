@@ -3,113 +3,94 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pravidla NexusMilitary</title>
+  <title>Nexus Military</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
+      display: flex;
       background: url('https://i.imgur.com/3IMbtnw.jpeg') no-repeat center center fixed;
       background-size: cover;
       color: white;
-      display: flex;
     }
 
-    /* Levý panel */
     .sidebar {
       width: 250px;
       background-color: rgba(0, 0, 0, 0.85);
       padding: 20px;
-      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.7);
       height: 100vh;
       position: fixed;
       top: 0;
       left: 0;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.7);
     }
 
     .sidebar h2 {
-      font-size: 1.5em;
-      margin-bottom: 15px;
+      margin-top: 0;
+      font-size: 1.6em;
       border-bottom: 1px solid #666;
-      padding-bottom: 5px;
+      padding-bottom: 10px;
     }
 
-    .sidebar .info {
-      margin-bottom: 15px;
-      transition: all 0.3s ease;
-      background-color: rgba(255, 255, 255, 0.05);
-      padding: 10px;
+    .nav-link {
+      display: block;
+      margin: 15px 0;
+      color: #ddd;
+      text-decoration: none;
+      cursor: pointer;
+      transition: 0.3s;
+      padding: 8px;
       border-radius: 5px;
     }
 
-    .sidebar .info:hover {
-      background-color: rgba(255, 255, 255, 0.15);
-      transform: scale(1.03);
-    }
-
-    .info label {
-      display: block;
-      font-weight: bold;
-      margin-bottom: 5px;
-      color: #ccc;
-    }
-
-    .info textarea {
-      width: 100%;
-      resize: vertical;
-      background-color: #111;
-      color: white;
-      border: none;
-      padding: 5px;
-      border-radius: 4px;
+    .nav-link:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      transform: translateX(5px);
     }
 
     .main {
-      margin-left: 270px;
-      flex: 1;
-    }
-
-    header {
-      background-color: rgba(0, 0, 0, 0.8);
+      margin-left: 250px;
       padding: 30px;
-      text-align: center;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+      width: 100%;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 2.5em;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 30px;
+    .section {
+      display: none;
       background-color: rgba(0, 0, 0, 0.7);
+      padding: 30px;
       border-radius: 10px;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
     }
 
-    h2 {
-      border-bottom: 1px solid #555;
-      padding-bottom: 5px;
-      margin-top: 30px;
-      color: #ffffff;
+    .section.active {
+      display: block;
+      animation: fadeIn 0.4s ease;
+    }
+
+    h1, h2 {
+      color: #fff;
     }
 
     ul {
-      list-style: disc;
       padding-left: 20px;
-      line-height: 1.6;
-      color: #ddd;
+      color: #ccc;
     }
 
     footer {
+      margin-top: 30px;
       text-align: center;
-      padding: 20px;
       color: #aaa;
-      background-color: rgba(0, 0, 0, 0.6);
       font-size: 0.9em;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @media (max-width: 768px) {
@@ -120,75 +101,81 @@
       .main {
         margin-left: 0;
       }
-
-      .container {
-        margin: 20px;
-        padding: 20px;
-      }
     }
   </style>
 </head>
 <body>
+
   <div class="sidebar">
-    <h2>O nás</h2>
-    <div class="info">
-      <label for="about">O serveru:</label>
-      <textarea id="about" rows="3" placeholder="Napiš něco o serveru..."></textarea>
-    </div>
-    <div class="info">
-      <label for="team">Tým:</label>
-      <textarea id="team" rows="2" placeholder="Jména adminů, vývojářů..."></textarea>
-    </div>
-    <div class="info">
-      <label for="discord">Discord:</label>
-      <textarea id="discord" rows="1" placeholder="Odkaz na Discord..."></textarea>
-    </div>
+    <h2>Menu</h2>
+    <a class="nav-link" onclick="showSection('about')">O nás</a>
+    <a class="nav-link" onclick="showSection('rules')">Pravidla</a>
   </div>
 
   <div class="main">
-    <header>
-      <h1>Pravidla Military</h1>
-    </header>
+    <!-- Sekce O nás -->
+    <div id="about" class="section active">
+      <h1>O nás</h1>
+      <p>
+        <!-- Tady si doplň svůj text -->
+        Jsme military roleplay komunita zaměřená na taktickou hru a týmovou spolupráci. 
+        Server běží na platformě FiveM a klade důraz na realismus a respekt k ostatním hráčům.
+      </p>
+      <p><strong>Discord:</strong> https://discord.gg/tvujserver</p>
+    </div>
 
-    <div class="container">
-      <h2><strong>1. Obecná pravidla</strong></h2>
+    <!-- Sekce Pravidla -->
+    <div id="rules" class="section">
+      <h1>Pravidla Military</h1>
+
+      <h2>1. Obecná pravidla</h2>
       <ul>
         <li>Respektuj hráče a staff.</li>
-        <li>Zákaz používání cheatů a zneužívání bugů.</li>
-        <li>Zákaz rasistického chování a používání „n-word“.</li>
+        <li>Zákaz cheatování a zneužívání bugů.</li>
+        <li>Rasismus a „n-word“ jsou zakázané.</li>
       </ul>
 
-      <h2><strong>2. Základní RP výrazy</strong></h2>
+      <h2>2. RP výrazy</h2>
       <ul>
-        <li><strong>RP (Roleplay):</strong> Hraní smyšlené postavy (např. voják, terorista).</li>
-        <li><strong>OOC (Out of Character):</strong> Vše, co není v rámci RP.</li>
-        <li><strong>IC (In Character):</strong> Vše, co je součástí roleplay postavy.</li>
-        <li><strong>/me:</strong> Popisuje činnost postavy.</li>
-        <li><strong>/do:</strong> Popis interakce s očekáváním reakce druhého hráče.</li>
-        <li><strong>/try:</strong> Pokus s výsledkem ANO/NE.</li>
-        <li><strong>/doc:</strong> Slouží k odpočtu nějaké činnosti.</li>
+        <li><strong>RP:</strong> Roleplay – hraní postavy.</li>
+        <li><strong>IC:</strong> V rámci postavy.</li>
+        <li><strong>OOC:</strong> Mimo postavu.</li>
+        <li><strong>/me:</strong> Popis činnosti.</li>
+        <li><strong>/do:</strong> Očekávání reakce jiného hráče.</li>
+        <li><strong>/try:</strong> Náhodný pokus (ANO/NE).</li>
+        <li><strong>/doc:</strong> Odpočet činnosti.</li>
       </ul>
 
-      <h2><strong>3. Military pravidla</strong></h2>
+      <h2>3. Pravidla frakcí</h2>
       <ul>
-        <li>Frakce musí být schválená admin týmem.</li>
-        <li>Raketomet se nesmí používat proti pěchotě. Výjimku mají teroristé – max. 1 střela.</li>
-        <li>Raid na jiný stát je možný jen po schválení v ticketu (výjimkou je rescue raid).</li>
-        <li>Stíhačky musí přebíjet – doporučeno každých 5 minut.</li>
-        <li>Zákaz campení EMS zón a střílení z/do EMS zón.</li>
-        <li>Každý voják musí mít VK (vojenskou knížku) – obsahuje jméno, datum narození, hodnost a armádu.</li>
+        <li>Frakce musí být schválené admin týmem.</li>
+        <li>Raketomet proti pěchotě zakázán (výjimka: teroristi, max. 1 střela).</li>
+        <li>Raid musí být schválen ticketem (výjimka: rescue raid).</li>
+        <li>Stíhačky přebíjej každých 5 min.</li>
+        <li>Zakázáno campit a střílet z/do EMS zón.</li>
+        <li>Každý voják musí mít VK (vojenskou knížku).</li>
       </ul>
 
-      <h2><strong>4. Sankce</strong></h2>
+      <h2>4. Sankce</h2>
       <ul>
-        <li>Porušení pravidel vede k warnu, kicku nebo banu.</li>
-        <li>Admin tým má právo zasáhnout dle vlastního uvážení.</li>
+        <li>Porušení pravidel = warn/kick/ban.</li>
+        <li>Admin tým má právo zasáhnout dle uvážení.</li>
       </ul>
     </div>
 
     <footer>
-      &copy; 2025 Nexus Military - r7lover
+      &copy; 2025 Nexus Military – r7lover
     </footer>
   </div>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
+
 </body>
 </html>
