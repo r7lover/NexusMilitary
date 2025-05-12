@@ -48,10 +48,23 @@
 
     .section {
       display: none;
+      opacity: 0;
+      transform: translateY(20px);
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 10px;
+      animation: fadeIn 0.5s ease forwards;
     }
 
     .section.active {
       display: block;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     h1 {
@@ -85,7 +98,6 @@
       text-align: center;
     }
 
-    /* Scrollbar styling */
     #rules::-webkit-scrollbar {
       width: 8px;
     }
@@ -125,7 +137,7 @@
   </nav>
 
   <div class="main">
-    <!-- Sekce PRAVIDLA -->
+    <!-- PRAVIDLA -->
     <div id="rules" class="section active">
       <h1>Pravidla Military</h1>
 
@@ -164,11 +176,11 @@
       </ul>
     </div>
 
-    <!-- Sekce O NÁS -->
+    <!-- O NÁS -->
     <div id="about" class="section">
       <h1>O nás</h1>
       <p>
-        <!-- Zde si můžeš doplnit vlastní text o komunitě -->
+        <!-- Doplň si sám obsah zde -->
         Jsme military roleplay komunita zaměřená na realistický a týmový přístup ke hře. Fungujeme na platformě FiveM.
       </p>
       <p><strong>Discord:</strong> https://discord.gg/tvujserver</p>
@@ -184,7 +196,8 @@
       document.querySelectorAll('.section').forEach(section => {
         section.classList.remove('active');
       });
-      document.getElementById(id).classList.add('active');
+      const selected = document.getElementById(id);
+      selected.classList.add('active');
 
       document.querySelectorAll('nav a').forEach(nav => {
         nav.classList.remove('active');
