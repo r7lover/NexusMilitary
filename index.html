@@ -3,9 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NexusMilitary - Pravidla & O nás</title>
+  <title>Nexus Military</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
@@ -13,209 +17,159 @@
       background-size: cover;
       color: white;
       display: flex;
-      height: 100vh;
     }
 
-    /* SIDEBAR */
     nav {
-      width: 220px;
-      background-color: rgba(0, 0, 0, 0.8);
-      padding-top: 50px;
+      width: 200px;
+      background-color: rgba(0, 0, 0, 0.85);
+      height: 100vh;
+      padding: 20px;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
-      animation: slideIn 0.6s ease-out forwards;
-      opacity: 0;
-      transform: translateX(-50px);
+      gap: 15px;
+      animation: slideIn 0.8s ease-out;
     }
 
-    @keyframes slideIn {
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
+    nav h2 {
+      margin-bottom: 10px;
+      font-size: 1.4em;
     }
 
     nav a {
-  color: white;
-  text-decoration: none;
-  margin: 10px 0;
-  font-size: 1.1em;
-  transition: 0.3s ease;
-}
+      color: white;
+      text-decoration: none;
+      font-size: 1.1em;
+      transition: 0.3s ease;
+    }
 
-nav a:hover,
-nav a.active {
-  color: #fff;
-  font-weight: bold;
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
-}
+    nav a:hover,
+    nav a.active {
+      color: #fff;
+      font-weight: bold;
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+    }
 
-    .main {
+    .content {
       flex: 1;
-      padding: 40px;
-      overflow-y: auto;
-    }
-
-    .section {
-      display: none;
-      opacity: 0;
-      transform: translateY(20px);
-      background-color: rgba(0, 0, 0, 0.6);
       padding: 30px;
-      border-radius: 10px;
-      animation: fadeIn 0.5s ease forwards;
+      overflow-y: auto;
+      animation: fadeIn 0.8s ease;
     }
 
-    .section.active {
+    section {
+      display: none;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+      animation: fadeIn 0.6s ease;
+    }
+
+    section.active {
       display: block;
     }
 
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    h1 {
-      margin-top: 0;
-    }
-
-    h2 {
+    h1, h2 {
       border-bottom: 1px solid #555;
       padding-bottom: 5px;
-      margin-top: 25px;
-      color: #ffffff;
+      margin-bottom: 20px;
     }
 
     ul {
       list-style: disc;
       padding-left: 20px;
       line-height: 1.6;
-      color: #ddd;
-    }
-
-    #rules {
-      max-height: 500px;
-      overflow-y: auto;
-      padding-right: 10px;
     }
 
     footer {
       margin-top: 40px;
-      font-size: 0.85em;
-      color: #aaa;
       text-align: center;
+      color: #aaa;
+      font-size: 0.9em;
     }
 
-    #rules::-webkit-scrollbar {
-      width: 8px;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    #rules::-webkit-scrollbar-thumb {
-      background-color: #444;
-      border-radius: 4px;
+    @keyframes slideIn {
+      from { transform: translateX(-100%); }
+      to { transform: translateX(0); }
     }
 
-    @media (max-width: 768px) {
-      body {
-        flex-direction: column;
-      }
-
+    @media (max-width: 700px) {
       nav {
-        flex-direction: row;
-        justify-content: center;
-        width: 100%;
-        height: auto;
-        padding: 10px 0;
+        width: 100px;
+        font-size: 0.9em;
       }
 
       nav a {
-        margin: 0 15px;
-      }
-
-      .main {
-        padding: 20px;
+        font-size: 0.9em;
       }
     }
   </style>
 </head>
 <body>
+
   <nav>
-    <a href="#" class="active" onclick="showSection('rules', this)">Pravidla</a>
-    <a href="#" onclick="showSection('about', this)">O nás</a>
+    <h2>Menu</h2>
+    <a href="#" class="active" data-section="pravidla">Pravidla</a>
+    <a href="#" data-section="onas">O nás</a>
+    <a href="#" data-section="frakce">Frakce</a>
   </nav>
 
-  <div class="main">
-    <!-- PRAVIDLA -->
-    <div id="rules" class="section active">
-      <h1>Pravidla Military</h1>
-
-      <h2>1. Obecná pravidla</h2>
+  <div class="content">
+    <section id="pravidla" class="active">
+      <h1>Pravidla</h1>
       <ul>
         <li>Respektuj hráče a staff.</li>
         <li>Zákaz používání cheatů a zneužívání bugů.</li>
         <li>Zákaz rasistického chování a používání „n-word“.</li>
+        <li>Raketomet se nesmí používat proti pěchotě (výjimka: 1 střela u teroristů).</li>
+        <li>Raidy musí být schválené přes ticket (mimo rescue raidy).</li>
+        <li>Stíhačky přebíjet každých 5 minut.</li>
+        <li>Zakázáno campit EMS zóny a střílet do/z nich.</li>
+        <li>Každý voják musí mít VK (vojenskou knížku).</li>
       </ul>
+    </section>
 
-      <h2>2. Základní RP výrazy</h2>
-      <ul>
-        <li><strong>RP (Roleplay):</strong> Hraní smyšlené postavy (např. voják, terorista).</li>
-        <li><strong>OOC (Out of Character):</strong> Vše, co není v rámci RP.</li>
-        <li><strong>IC (In Character):</strong> Vše, co je součástí roleplay postavy.</li>
-        <li><strong>/me:</strong> Popisuje činnost postavy.</li>
-        <li><strong>/do:</strong> Popis interakce s očekáváním reakce druhého hráče.</li>
-        <li><strong>/try:</strong> Pokus s výsledkem ANO/NE.</li>
-        <li><strong>/doc:</strong> Slouží k odpočtu nějaké činnosti.</li>
-      </ul>
-
-      <h2>3. Military pravidla</h2>
-      <ul>
-        <li>Frakce musí být schválená admin týmem.</li>
-        <li>Raketomet se nesmí používat proti pěchotě. Výjimku mají teroristé – max. 1 střela.</li>
-        <li>Raid na jiný stát je možný jen po schválení v ticketu (výjimkou je rescue raid).</li>
-        <li>Stíhačky musí přebíjet – doporučeno každých 5 minut.</li>
-        <li>Zákaz campení EMS zón a střílení z/do EMS zón.</li>
-        <li>Každý voják musí mít VK (vojenskou knížku) – obsahuje jméno, datum narození, hodnost a armádu.</li>
-      </ul>
-
-      <h2>4. Sankce</h2>
-      <ul>
-        <li>Porušení pravidel vede k warnu, kicku nebo banu.</li>
-        <li>Admin tým má právo zasáhnout dle vlastního uvážení.</li>
-      </ul>
-    </div>
-
-    <!-- O NÁS -->
-    <div id="about" class="section">
+    <section id="onas">
       <h1>O nás</h1>
-      <p>
-        <!-- Doplň si sám obsah zde -->
-        Jsme military roleplay komunita zaměřená na realistický a týmový přístup ke hře. Fungujeme na platformě FiveM.
-      </p>
-      <p><strong>Discord:</strong> https://discord.gg/tvujserver</p>
-    </div>
+      <p>Sem si můžeš dopsat informace o komunitě, historii serveru nebo něco o týmu.</p>
+    </section>
+
+    <section id="frakce">
+      <h1>Frakce</h1>
+      <p>Sem dopiš informace o dostupných frakcích, jejich pravidlech nebo přehled rolí.</p>
+    </section>
 
     <footer>
-      &copy; 2025 Nexus Military – r7lover
+      &copy; 2025 Nexus Military - r7lover
     </footer>
   </div>
 
   <script>
-    function showSection(id, link) {
-      document.querySelectorAll('.section').forEach(section => {
-        section.classList.remove('active');
-      });
-      const selected = document.getElementById(id);
-      selected.classList.add('active');
+    const links = document.querySelectorAll('nav a');
+    const sections = document.querySelectorAll('section');
 
-      document.querySelectorAll('nav a').forEach(nav => {
-        nav.classList.remove('active');
+    links.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+
+        const target = link.getAttribute('data-section');
+
+        sections.forEach(section => {
+          section.classList.remove('active');
+        });
+
+        document.getElementById(target).classList.add('active');
       });
-      link.classList.add('active');
-    }
+    });
   </script>
+
 </body>
 </html>
