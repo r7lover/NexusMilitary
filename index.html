@@ -3,163 +3,175 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nexus Military</title>
+  <title>NexusMilitary - Pravidla & O nás</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      display: flex;
       background: url('https://i.imgur.com/3IMbtnw.jpeg') no-repeat center center fixed;
       background-size: cover;
       color: white;
-    }
-
-    .sidebar {
-      width: 250px;
-      background-color: rgba(0, 0, 0, 0.85);
-      padding: 20px;
+      display: flex;
       height: 100vh;
-      position: fixed;
-      top: 0;
-      left: 0;
-      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.7);
     }
 
-    .sidebar h2 {
-      margin-top: 0;
-      font-size: 1.6em;
-      border-bottom: 1px solid #666;
-      padding-bottom: 10px;
+    nav {
+      width: 220px;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding-top: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
     }
 
-    .nav-link {
-      display: block;
-      margin: 15px 0;
-      color: #ddd;
+    nav a {
+      color: white;
       text-decoration: none;
-      cursor: pointer;
-      transition: 0.3s;
-      padding: 8px;
-      border-radius: 5px;
+      margin: 10px 0;
+      font-size: 1.1em;
+      transition: 0.3s ease;
     }
 
-    .nav-link:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-      transform: translateX(5px);
+    nav a:hover,
+    nav a.active {
+      color: #00bfff;
+      font-weight: bold;
     }
 
     .main {
-      margin-left: 250px;
-      padding: 30px;
-      width: 100%;
+      flex: 1;
+      padding: 40px;
+      overflow-y: auto;
     }
 
     .section {
       display: none;
-      background-color: rgba(0, 0, 0, 0.7);
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
     }
 
     .section.active {
       display: block;
-      animation: fadeIn 0.4s ease;
     }
 
-    h1, h2 {
-      color: #fff;
+    h1 {
+      margin-top: 0;
+    }
+
+    h2 {
+      border-bottom: 1px solid #555;
+      padding-bottom: 5px;
+      margin-top: 25px;
+      color: #ffffff;
     }
 
     ul {
+      list-style: disc;
       padding-left: 20px;
-      color: #ccc;
+      line-height: 1.6;
+      color: #ddd;
+    }
+
+    #rules {
+      max-height: 500px;
+      overflow-y: auto;
+      padding-right: 10px;
     }
 
     footer {
-      margin-top: 30px;
-      text-align: center;
+      margin-top: 40px;
+      font-size: 0.85em;
       color: #aaa;
-      font-size: 0.9em;
+      text-align: center;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* Scrollbar styling */
+    #rules::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    #rules::-webkit-scrollbar-thumb {
+      background-color: #444;
+      border-radius: 4px;
     }
 
     @media (max-width: 768px) {
-      .sidebar {
-        display: none;
+      body {
+        flex-direction: column;
+      }
+
+      nav {
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+        height: auto;
+        padding: 10px 0;
       }
 
       .main {
-        margin-left: 0;
+        padding: 20px;
+      }
+
+      nav a {
+        margin: 0 15px;
       }
     }
   </style>
 </head>
 <body>
-
-  <div class="sidebar">
-    <h2>Menu</h2>
-    <a class="nav-link" onclick="showSection('about')">O nás</a>
-    <a class="nav-link" onclick="showSection('rules')">Pravidla</a>
-  </div>
+  <nav>
+    <a href="#" class="active" onclick="showSection('rules', this)">Pravidla</a>
+    <a href="#" onclick="showSection('about', this)">O nás</a>
+  </nav>
 
   <div class="main">
-    <!-- Sekce O nás -->
-    <div id="about" class="section active">
-      <h1>O nás</h1>
-      <p>
-        <!-- Tady si doplň svůj text -->
-        here dodělat
-      </p>
-      <p><strong>Discord:</strong> sem plesknout dis pozvanku</p>
-    </div>
-
-    <!-- Sekce Pravidla -->
-    <div id="rules" class="section">
+    <!-- Sekce PRAVIDLA -->
+    <div id="rules" class="section active">
       <h1>Pravidla Military</h1>
 
       <h2>1. Obecná pravidla</h2>
       <ul>
         <li>Respektuj hráče a staff.</li>
-        <li>Zákaz cheatování a zneužívání bugů.</li>
-        <li>Rasismus a „n-word“ jsou zakázané.</li>
+        <li>Zákaz používání cheatů a zneužívání bugů.</li>
+        <li>Zákaz rasistického chování a používání „n-word“.</li>
       </ul>
 
-      <h2>2. RP výrazy</h2>
+      <h2>2. Základní RP výrazy</h2>
       <ul>
-        <li><strong>RP:</strong> Roleplay – hraní postavy.</li>
-        <li><strong>IC:</strong> V rámci postavy.</li>
-        <li><strong>OOC:</strong> Mimo postavu.</li>
-        <li><strong>/me:</strong> Popis činnosti.</li>
-        <li><strong>/do:</strong> Očekávání reakce jiného hráče.</li>
-        <li><strong>/try:</strong> Náhodný pokus (ANO/NE).</li>
-        <li><strong>/doc:</strong> Odpočet činnosti.</li>
+        <li><strong>RP (Roleplay):</strong> Hraní smyšlené postavy (např. voják, terorista).</li>
+        <li><strong>OOC (Out of Character):</strong> Vše, co není v rámci RP.</li>
+        <li><strong>IC (In Character):</strong> Vše, co je součástí roleplay postavy.</li>
+        <li><strong>/me:</strong> Popisuje činnost postavy.</li>
+        <li><strong>/do:</strong> Popis interakce s očekáváním reakce druhého hráče.</li>
+        <li><strong>/try:</strong> Pokus s výsledkem ANO/NE.</li>
+        <li><strong>/doc:</strong> Slouží k odpočtu nějaké činnosti.</li>
       </ul>
 
-      <h2>3. Pravidla frakcí</h2>
+      <h2>3. Military pravidla</h2>
       <ul>
-        <li>Frakce musí být schválené admin týmem.</li>
-        <li>Raketomet proti pěchotě zakázán (výjimka: teroristi, max. 1 střela).</li>
-        <li>Raid musí být schválen ticketem (výjimka: rescue raid).</li>
-        <li>Stíhačky přebíjej každých 5 min.</li>
-        <li>Zakázáno campit a střílet z/do EMS zón.</li>
-        <li>Každý voják musí mít VK (vojenskou knížku).</li>
+        <li>Frakce musí být schválená admin týmem.</li>
+        <li>Raketomet se nesmí používat proti pěchotě. Výjimku mají teroristé – max. 1 střela.</li>
+        <li>Raid na jiný stát je možný jen po schválení v ticketu (výjimkou je rescue raid).</li>
+        <li>Stíhačky musí přebíjet – doporučeno každých 5 minut.</li>
+        <li>Zákaz campení EMS zón a střílení z/do EMS zón.</li>
+        <li>Každý voják musí mít VK (vojenskou knížku) – obsahuje jméno, datum narození, hodnost a armádu.</li>
       </ul>
 
       <h2>4. Sankce</h2>
       <ul>
-        <li>Porušení pravidel = warn/kick/ban.</li>
-        <li>Admin tým má právo zasáhnout dle uvážení.</li>
+        <li>Porušení pravidel vede k warnu, kicku nebo banu.</li>
+        <li>Admin tým má právo zasáhnout dle vlastního uvážení.</li>
       </ul>
+    </div>
+
+    <!-- Sekce O NÁS -->
+    <div id="about" class="section">
+      <h1>O nás</h1>
+      <p>
+        <!-- Zde si můžeš doplnit vlastní text o komunitě -->
+        Jsme military roleplay komunita zaměřená na realistický a týmový přístup ke hře. Fungujeme na platformě FiveM.
+      </p>
+      <p><strong>Discord:</strong> https://discord.gg/tvujserver</p>
     </div>
 
     <footer>
@@ -168,13 +180,17 @@
   </div>
 
   <script>
-    function showSection(id) {
+    function showSection(id, link) {
       document.querySelectorAll('.section').forEach(section => {
         section.classList.remove('active');
       });
       document.getElementById(id).classList.add('active');
+
+      document.querySelectorAll('nav a').forEach(nav => {
+        nav.classList.remove('active');
+      });
+      link.classList.add('active');
     }
   </script>
-
 </body>
 </html>
