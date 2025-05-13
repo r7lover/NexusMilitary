@@ -6,10 +6,6 @@
   <title>Nexus Military</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
@@ -21,159 +17,232 @@
 
     nav {
       width: 200px;
-      background-color: rgba(0, 0, 0, 0.85);
+      background-color: rgba(0, 0, 0, 0.8);
       height: 100vh;
-      padding: 20px;
+      padding-top: 40px;
+      position: fixed;
+      left: 0;
+      top: 0;
       display: flex;
       flex-direction: column;
-      gap: 15px;
-      animation: slideIn 0.8s ease-out;
+      align-items: center;
+      animation: slideIn 0.8s ease-in-out;
     }
 
-    nav h2 {
-      margin-bottom: 10px;
-      font-size: 1.4em;
-    }
-
-    nav a {
+    nav button {
+      background: none;
+      border: none;
       color: white;
-      text-decoration: none;
       font-size: 1.1em;
-      transition: 0.3s ease;
+      margin: 15px 0;
+      cursor: pointer;
+      transition: color 0.3s;
     }
 
-    nav a:hover,
-    nav a.active {
+    nav button.active,
+    nav button:hover {
       color: #fff;
       font-weight: bold;
-      text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
     }
 
     .content {
+      margin-left: 200px;
+      padding: 40px;
       flex: 1;
-      padding: 30px;
-      overflow-y: auto;
-      animation: fadeIn 0.8s ease;
     }
 
-    section {
+    .section {
       display: none;
       background-color: rgba(0, 0, 0, 0.7);
-      padding: 25px;
+      padding: 30px;
       border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
-      animation: fadeIn 0.6s ease;
+      animation: fadeIn 0.5s ease-in-out;
+      max-height: 80vh;
+      overflow-y: auto;
     }
 
-    section.active {
+    .section.active {
       display: block;
     }
 
-    h1, h2 {
-      border-bottom: 1px solid #555;
-      padding-bottom: 5px;
-      margin-bottom: 20px;
+    h2 {
+      color: white;
+      margin-top: 0;
     }
 
     ul {
       list-style: disc;
       padding-left: 20px;
       line-height: 1.6;
+      color: #ddd;
     }
 
-footer {
-  margin-top: 40px;
-  text-align: center;
-  color: #000; /* změna na černou */
-  font-size: 0.9em;
-  background-color: rgba(255, 255, 255, 0.5); /* lehce průhledné světlé pozadí */
-  padding: 15px;
-  border-radius: 8px;
-}
-
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: black;
+      color: black;
+      font-size: 0.9em;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      left: 0;
     }
 
     @keyframes slideIn {
-      from { transform: translateX(-100%); }
-      to { transform: translateX(0); }
+      from {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
     }
 
-    @media (max-width: 700px) {
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
       nav {
-        width: 100px;
-        font-size: 0.9em;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: center;
+        position: relative;
       }
 
-      nav a {
-        font-size: 0.9em;
+      .content {
+        margin-left: 0;
+        padding: 20px;
       }
     }
   </style>
 </head>
 <body>
-
   <nav>
-    <h2>Menu</h2>
-    <a href="#" class="active" data-section="pravidla">Pravidla</a>
-    <a href="#" data-section="onas">O nás</a>
-    <a href="#" data-section="frakce">Frakce</a>
+    <button class="tab-button active" data-target="rules">Pravidla</button>
+    <button class="tab-button" data-target="about">O nás</button>
+    <button class="tab-button" data-target="frakce">Frakce</button>
   </nav>
 
   <div class="content">
-    <section id="pravidla" class="active">
-      <h1>Pravidla</h1>
+    <div id="rules" class="section active">
+      <h2>1. Obecná pravidla</h2>
       <ul>
         <li>Respektuj hráče a staff.</li>
         <li>Zákaz používání cheatů a zneužívání bugů.</li>
         <li>Zákaz rasistického chování a používání „n-word“.</li>
-        <li>Raketomet se nesmí používat proti pěchotě (výjimka: 1 střela u teroristů).</li>
-        <li>Raidy musí být schválené přes ticket (mimo rescue raidy).</li>
-        <li>Stíhačky přebíjet každých 5 minut.</li>
-        <li>Zakázáno campit EMS zóny a střílet do/z nich.</li>
-        <li>Každý voják musí mít VK (vojenskou knížku).</li>
       </ul>
-    </section>
 
-    <section id="onas">
-      <h1>O nás</h1>
-      <p>Sem si můžeš dopsat informace o komunitě, historii serveru nebo něco o týmu.</p>
-    </section>
+      <h2>2. Základní RP výrazy</h2>
+      <ul>
+        <li><strong>RP:</strong> Hraní smyšlené postavy (voják, terorista apod.).</li>
+        <li><strong>OOC:</strong> Vše mimo hru – Out Of Character.</li>
+        <li><strong>IC:</strong> Vše v rámci roleplay postavy – In Character.</li>
+        <li><strong>/me:</strong> Popis činnosti postavy.</li>
+        <li><strong>/do:</strong> Interakce s očekáváním reakce druhého hráče.</li>
+        <li><strong>/try:</strong> Pokus s výsledkem ANO/NE.</li>
+        <li><strong>/doc:</strong> Slouží k odpočtu nějaké činnosti.</li>
+      </ul>
 
-    <section id="frakce">
-      <h1>Frakce</h1>
-      <p>Sem dopiš informace o dostupných frakcích, jejich pravidlech nebo přehled rolí.</p>
-    </section>
+      <h2>3. Military pravidla</h2>
+      <ul>
+        <li>Frakce musí být schválená admin týmem.</li>
+        <li>Raketomet proti pěchotě je zakázán – výjimka: teroristi (max. 1 střela).</li>
+        <li>Raid na stát jen se schválením v ticketu (kromě rescue raidu).</li>
+        <li>Stíhačky musí přebíjet každých 5 minut.</li>
+        <li>Zákaz campení EMS zón a střílení z/do nich.</li>
+        <li>Každý voják musí mít VK (vojenskou knížku): jméno, narození, hodnost, armáda.</li>
+      </ul>
 
-    <footer>
-      &copy; 2025 Nexus Military - r7lover
-    </footer>
-  </div>
+      <h2>4. Raid pravidla</h2>
+      <ul>
+          <li><strong>Minimální počet hráčů pro raid:</strong> Pro úspěšné provedení raidu je povinné mít alespoň 12 hráčů, a to za jakýchkoliv podmínek. Tento počet se vztahuje na všechny frakce.</li>
+          <li><strong>Střelba z území jiné frakce:</strong> Pokud je vaše frakce napadána z území jiného týmu (např. USA odstřeluje vaši FOB), můžete automaticky zahájit raid na základě obrany, pokud se nacházíte na daném území. Tato podmínka neplatí pro všechny případy – pokud se nejedná o vaše území, nemůžete provádět protiútok.</li>
+          <li><strong>Raid na armády a PMC:</strong> Všechny raidy na armády a PMC (private military contractors) musí být předem schváleny administrátory v ticketu. Výjimkou jsou pouze teroristické frakce, které mohou zahájit raid s minimálně 8 hráči bez předchozího schválení.</li>
+          <li><strong>Války mezi armádami:</strong> Pokud dojde k válce mezi dvěma armádami, musí být tato skutečnost oznámena administrátorům prostřednictvím ticketu před zahájením jakéhokoli raidu. Admin tým bude o válce informován a může monitorovat průběh konfliktu.</li>
+          <li><strong>Raidy armád na teroristy:</strong> Armády nejsou povinny oznamovat raidy na teroristické frakce v ticketu, ale musí mít dostatečné důvody pro provedení raidu. Vždy je nutné informovat admin tým pomocí příkazu <code>/report</code> ve hře.</li>
+          <li><strong>Raidy mezi armádami:</strong> Pokud armáda provádí raid na jinou armádu (např. kvůli únosu vojáka), není nutné oznámit tento raid prostřednictvím ticketu. Je však nezbytné okamžitě informovat admin tým pomocí příkazu <code>/report</code> ve hře.</li>
+          <li><strong>Opětování raidu:</strong> Pokud byla armádě provedena úspěšná akce (raid) jinou armádou, může tento raid opětovat za 2 hodiny reálného času. Toto platí pro všechny armády, které se zúčastnily raidu.</li>
+          <li><strong>Cooldown pro teroristy:</strong> Po provedení raidu na jinou frakci mají teroristé povinný 3hodinový cooldown, než mohou zahájit další raid na jinou frakci.</li>
+          <li><strong>Opakované útoky na teroristy:</strong> Je zakázáno pravidelně útočit na teroristické skupiny více než 3krát za den. Pokud toto pravidlo porušíte, může být vaše frakce potrestána frakčním strikem (např. omezení činností nebo sankce).</li>
+          <li><strong>Oznámení raidu:</strong> Každý raid, ať už prováděný armádou, PMC nebo teroristy, musí být oznámen administrátorům ve hře pomocí příkazu <code>/report</code>. Tento příkaz je povinný pro všechny raidy, aby admin tým mohl monitorovat správnost provedení raidu.</li>
+      </ul>
+
+      <h2>5. Pravidla Aliancí a předávání informací</h2>
+      <ul>
+          <li><strong>Aliance a jejich schválení:</strong>Aliance musí být předem schválena administrátory prostřednictvím ticketu.</li>
+          <li><strong>Změny v Alianci:</strong> Jakékoliv změny týkající se Aliance musí být neprodleně oznámeny staff týmu pomocí ticketu. Tato pravidla zajišťují, že všechny změny jsou schválené a v souladu s pravidly serveru.</li>
+          <li><strong>Maximální počet frakcí v Alianci:</strong> V každé Alianci mohou být maximálně dvě frakce. Tento limit je stanoven, aby byla zachována rovnováha a herní dynamika na serveru.</li>
+          <li><strong>Spojování frakcí:</strong> Pokud chcete spojit dvě frakce, musíte mít pádný důvod. Spojení frakcí musí být schváleno administrátory prostřednictvím ticketu. Tento proces zajistí, že spojení bude mít pozitivní dopad na hru a nebude narušovat herní zážitek ostatních hráčů.</li>
+      </ul>
+    </div>
+
+    <div id="about" class="section">
+      <h2>O nás</h2>
+      <p>Už na tom pracuju! - revolver</p>
+    </div>
+
+<div id="frakce" class="section">
+  <h2>Frakce</h2>
+  <ul>
+    <li>
+      <strong>United States Army</strong><br>
+      Jedna z nejlépe vybavených a technologicky nejvyspělejších armád na světě.  
+      Specializuje se na <em>letectvo, přesné údery, moderní techniku a rychlou mobilizaci</em>.  
+      Mezi hlavní jednotky patří: <strong>M1 Abrams</strong>, <strong>Apache</strong> <strong>F-35</strong>.
+    </li>
+    <li>
+      <strong>Ruská federace</strong><br>
+      Silná a rozsáhlá armáda s důrazem na <em>těžkou techniku, dělostřelectvo a raketové systémy</em>.  
+      Charakteristické jednotky: <strong>T-90</strong>, <strong>S-400</strong> (AA), početná pěchota.
+    </li>
+    <li>
+      <strong>Britské ozbrojené síly</strong><br>
+      Flexibilní a vysoce profesionální armáda s <em>globálním dosahem</em>.  
+      Klíčové prvky: <strong>letadlové lodě Queen Elizabeth</strong>, elitní jednotky <strong>SAS</strong>, pokročilé <strong>dronové technologie</strong>.
+    </li>
+    <li>
+      <strong>Armáda České republiky</strong><br>
+      Menší, ale modernizovaná armáda zaměřená na <em>spolupráci v rámci NATO</em>.  
+      Výzbroj zahrnuje: <strong>lehká obrněná vozidla</strong>, <strong>vrtulníky</strong>, specializované jednotky pro <strong>mezinárodní operace</strong>.
+    </li>
+    <li>
+      <strong>Francouzské ozbrojené síly</strong><br>
+      Vyvážená armáda s <em>vlastní jadernou silou</em>, pokročilým letectvem (<strong>Dassault Rafale</strong>) a silnými <strong>speciálními jednotkami</strong>.  
+      Aktivně se účastní světových misí a je členem <strong>NATO</strong>.
+    </li>
+  </ul>
+</div>
+
+
+
+  <footer>
+    &copy; 2025 Nexus Military - r7lover
+  </footer>
 
   <script>
-    const links = document.querySelectorAll('nav a');
-    const sections = document.querySelectorAll('section');
+    const buttons = document.querySelectorAll('.tab-button');
+    const sections = document.querySelectorAll('.section');
 
-    links.forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
 
-        links.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-
-        const target = link.getAttribute('data-section');
-
-        sections.forEach(section => {
-          section.classList.remove('active');
-        });
-
-        document.getElementById(target).classList.add('active');
+        sections.forEach(sec => sec.classList.remove('active'));
+        document.getElementById(btn.dataset.target).classList.add('active');
       });
     });
   </script>
-
 </body>
 </html>
